@@ -1,14 +1,12 @@
 import at.rocworks.gateway.core.opcua.KeyStoreLoader
 import at.rocworks.gateway.core.service.Common
 import at.rocworks.gateway.core.service.Component
-
-import at.rocworks.gateway.logger.influx.InfluxDBLogger
+import at.rocworks.gateway.logger.influx.InfluxDBV2Logger
+import at.rocworks.gateway.logger.iotdb.IoTDBLogger
 import at.rocworks.gateway.logger.jdbc.JdbcLogger
 import at.rocworks.gateway.logger.kafka.KafkaLogger
-import at.rocworks.gateway.logger.iotdb.IoTDBLogger
 import at.rocworks.gateway.logger.neo4j.Neo4jLogger
 import at.rocworks.gateway.logger.opensearch.OpenSearchLogger
-
 import io.vertx.core.Vertx
 import io.vertx.core.VertxOptions
 import io.vertx.core.json.JsonObject
@@ -27,7 +25,7 @@ object App {
 
         fun factory(type: Component.ComponentType, config: JsonObject): Component? {
             return Component.defaultFactory(type, config) ?: when (type) {
-                Component.ComponentType.InfluxDBLogger   -> InfluxDBLogger(config)
+                Component.ComponentType.InfluxDBLogger   -> InfluxDBV2Logger(config)
                 Component.ComponentType.IoTDBLogger      -> IoTDBLogger(config)
                 Component.ComponentType.KafkaLogger      -> KafkaLogger(config)
                 Component.ComponentType.JdbcLogger       -> JdbcLogger(config)

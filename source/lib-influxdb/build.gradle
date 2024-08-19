@@ -11,4 +11,5 @@ dependencies {
     implementation "io.vertx:vertx-service-discovery:$vertxVersion"
 
     implementation 'org.influxdb:influxdb-java:2.21'
+    implementation 'com.influxdb:influxdb-client-kotlin:7.1.0'
 }
